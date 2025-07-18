@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <div>
         <Navbar/>
-        <div className="flex h-screen flex-col sm:flex-row">
+        <div className="flex h-screen flex-col-reverse sm:flex-row">
 
             <div className="flex-1 flex items-center justify-center bg-gray-100">
                 <SignIn />
