@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const AddTaskForm = () => {
+const AddTaskForm = ({tasks, setTasks}) => {
   const [title, setTitle] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [heureDebut, setHeureDebut] = useState('');
@@ -35,17 +35,25 @@ const AddTaskForm = () => {
         setHeureDebut('');
         setHeureFin('');
         setDescription('');
+        fetch("/api/Tasks")
+            .then(res => res.json())
+            .then(data=>{
+                setTasks(data)
+        })
+      
       } else {
         const errorText = await res.text();
         setMessage(`❌ Erreur : ${errorText}`);
       }
+      //window.location.reload()
+
     } catch (error) {
       setMessage(`❌ Erreur réseau : ${error.message}`);
     }
   }
 
   return (
-    <div className="p-6 max-w-3xl mx-auto w-full">
+    <div className="p-6 max-w-3xl mx-auto w-full bg-blue-50">
       <form onSubmit={postData} className="flex flex-col gap-6 bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
         <h2 className="text-3xl font-bold text-center text-neutral-800 mb-4">Ajouter une tâche</h2>
 

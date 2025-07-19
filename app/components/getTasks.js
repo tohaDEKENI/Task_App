@@ -1,10 +1,12 @@
 'use client';
 import { useEffect, useState } from "react";
 
-const Gettasks = () => {
-  const [tasks, setTasks] = useState([]);
+const Gettasks = ({tasks, setTasks}) => {
+  //const [tasks, setTasks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 1;
+  const [message,setMesage] = useState("")
+  const [isMessage,setIsMage] = useState(false)
 
   useEffect(() => {
     fetch("/api/Tasks")
@@ -32,6 +34,25 @@ const Gettasks = () => {
     currentPage * itemsPerPage
   );
 
+  async function deleteTasks(id){
+    const result = window.confirm("Voulez-vous vraiment supprimer cette tâche ?")
+    if(result){
+        console.log("c'est fait")
+        const response = await fetch("/api/Tasks/"+id,{
+            method:"DELETE",
+            headers:{"Content-Type":"application/json"}
+        })
+        const data = await response.json()
+        setIsMage(true)
+        setMesage(data.message)
+    }
+   
+  }
+  
+  function updateTasks(){
+
+  }
+
   return (
     <div className="p-6 max-w-4xl w-full mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-neutral-800">🗂️ Liste des tâches</h2>
@@ -54,6 +75,18 @@ const Gettasks = () => {
                     {task.is_done ? "Terminée ✅" : "En cours ⏳"}
                   </span>
                 </p>
+              </div>
+              <div className="flex gap-4 mt-4">
+                <button className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition cursor-pointer"
+                    
+                >
+                  Modifier
+                </button>
+                <button className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition cursor-pointer"
+                    onClick={()=>deleteTasks(task.id)}
+                >
+                  Supprimer
+                </button>
               </div>
             </div>
           ))}
@@ -83,6 +116,12 @@ const Gettasks = () => {
           </button>
         </div>
       )}
+      {
+        isMessage && (
+              <p className="mt-10 text-center bg-green-100 ring-4 ring-green-200 rounded-md">{message}</p>
+        )
+      
+      }
     </div>
   );
 };
