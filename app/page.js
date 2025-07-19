@@ -29,19 +29,19 @@ const Page = () => {
   }, [taskId]);
 
   return (
-    <div className="h-screen bg-gray-200 ">
+    <div className="md:h-screen bg-gray-200 h-auto">
       <Navbar />
       <main className="pt-20 flex flex-col-reverse sm:flex-row max-w-10/12 m-auto items-center justify-center h-full ">
-        <div className="  h-full w-full border-l-8 ">
+        <div className="  h-full w-full border-l-8 md:block hidden">
           <AddTaskForm tasks={tasks} setTasks={setTasks} />
         </div>
-        <div className="h-full w-full md:flex justify-center border-l-8 border-r-8 hidden bg-white">
+        <div className="h-full w-full md:block justify-center border-l-8 border-r-8 hidden bg-white">
           <Gettasks tasks={tasks} setTasks={setTasks} updateWindow={updateWindow} setUpdateWindow={setUpdateWindow} setTaskId={setTaskId} />
         </div>
         {updateWindow && taskId && updateData && (
           <div
-            className="fixed w-full h-full bg-black/25 self-center"
-            onClick={() => {setUpdateWindow(false),setTaskId(null)}}
+            className="fixed w-full h-full bg-black/50 self-center"
+            onClick={() => { setUpdateWindow(false), setTaskId(null) }}
           >
             <div>
               <UpdateForm setTasks={setTasks} updateWindow={updateWindow} setUpdateWindow={setUpdateWindow} updateData={updateData} />
@@ -49,6 +49,26 @@ const Page = () => {
           </div>
         )}
 
+      </main>
+
+      <main className="p-6 max-w-3xl mx-auto text-center md:hidden flex flex-col items-center justify-center h-screen">
+        <h1 className="text-3xl font-bold mb-6">Tâches Zen</h1>
+
+        <div className="flex flex-col md:flex-row justify-center gap-4">
+          <button
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold"
+            onClick={() => console.log("Ajouter une tâche")}
+          >
+            ➕ Ajouter une tâche
+          </button>
+
+          <button
+            className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-semibold"
+            onClick={() => console.log("Voir mes tâches")}
+          >
+            📋 Voir mes tâches
+          </button>
+        </div>
       </main>
     </div>
   );

@@ -114,7 +114,7 @@ const AddTaskForm = ({tasks, setTasks}) => {
             placeholder="Description détaillée de la tâche"
             className="border p-4 rounded-lg h-48 resize-none outline-none focus:ring-2 focus:ring-blue-500"
             value={description}
-            onChange={(e) => {setDescription(e.target.value), setText(e.target.value);}}
+            onChange={(e) => {setDescription(e.target.value)}}
             required
             maxLength={528}
           />
