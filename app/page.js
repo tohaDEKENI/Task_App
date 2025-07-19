@@ -13,7 +13,7 @@ const Page = () => {
 
   useEffect(() => {
     if (taskId) {
-      fetch("http://localhost:3000/api/Tasks/" + taskId)
+      fetch("/api/Tasks/" + taskId)
         .then(res => res.json())
         .then(data => {
           if (Array.isArray(data) && data.length > 0) {
