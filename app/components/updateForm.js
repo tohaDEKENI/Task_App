@@ -1,12 +1,75 @@
 'use client'
-const UpdateForm = ({updateWindow,setUpdateWindow,updateData}) => {
-   
-    console.log("Cote Leue"+updateData?.title)
+
+import { useEffect, useState } from "react";
+
+const UpdateForm = ({ setTasks, updateWindow, setUpdateWindow, updateData }) => {
+
+    const [message, setMessage] = useState("")
+    const [isMessage,setIsMessage] = useState(false)
+    const [formData, setFormDate] = useState({
+        title: "",
+        due_date: "",
+        heure_debut: "",
+        heure_fin: "",
+        description: ""
+    })
+
+    useEffect(() => (
+        setFormDate({
+            title: updateData.title || "",
+            due_date: updateData.due_date ? updateData.due_date.substring(0, 10) : "",
+            heure_debut: updateData.heure_debut || "",
+            heure_fin: updateData.heure_fin || "",
+            description: updateData.description || ""
+        })
+    ), [])
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setFormDate(prev => ({ ...prev, [name]: value }));
+        console.log(formData)
+    }
+
+    async function updateDataForm(e) {
+        e.preventDefault()
+        const res = await fetch('/api/Tasks/' + updateData.id, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        })
+
+        const data = await res.json()
+        if (data) {
+            setFormDate({
+                title: "",
+                due_date: "",
+                heure_debut: "",
+                heure_fin: "",
+                description: ""
+            })
+            setMessage(data.message)
+            setIsMessage(true)
+            fetch("/api/Tasks")
+                .then(res => res.json())
+                .then(data => {
+                    setTasks(data)
+                })
+        }
+
+
+    }
 
     return (
 
         <div className="p-6 max-w-3xl mx-auto w-full bg-blue-50 self-center" onClick={(e) => e.stopPropagation()}>
-            <form  className="flex flex-col gap-6 bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+
+            <form className="flex flex-col gap-6 bg-white p-8 rounded-2xl shadow-lg border border-gray-200" onSubmit={updateDataForm}>
+                {
+                    isMessage && (
+                        <h1 className="text-center bg-green-400 py-1 rounded-md text-white">{message}</h1>
+                    )
+                }
+
                 <h2 className="text-3xl font-bold text-center text-neutral-800 mb-4">Modifier une tâche</h2>
 
                 <div className="flex flex-col">
@@ -17,7 +80,8 @@ const UpdateForm = ({updateWindow,setUpdateWindow,updateData}) => {
                         className="border p-4 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                         name="title"
                         required
-                        defaultValue={updateData.title}
+                        value={formData.title}
+                        onChange={handleChange}
                     />
                 </div>
 
@@ -28,7 +92,8 @@ const UpdateForm = ({updateWindow,setUpdateWindow,updateData}) => {
                         className="border p-4 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                         name="due_date"
                         required
-                        defaultValue={updateData.due_date.substring(0, 10)}
+                        value={formData.due_date.substring(0, 10)}
+                        onChange={handleChange}
                     />
                 </div>
 
@@ -40,7 +105,8 @@ const UpdateForm = ({updateWindow,setUpdateWindow,updateData}) => {
                             className="border p-4 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                             name="heure_debut"
                             required
-                            defaultValue={updateData.heure_debut}
+                            value={formData.heure_debut}
+                            onChange={handleChange}
                         />
                     </div>
 
@@ -51,7 +117,8 @@ const UpdateForm = ({updateWindow,setUpdateWindow,updateData}) => {
                             className="border p-4 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                             name="heure_fin"
                             required
-                            defaultValue={updateData.heure_fin}
+                            value={formData.heure_fin}
+                            onChange={handleChange}
                         />
                     </div>
                 </div>
@@ -63,13 +130,15 @@ const UpdateForm = ({updateWindow,setUpdateWindow,updateData}) => {
                         className="border p-4 rounded-lg h-48 resize-none outline-none focus:ring-2 focus:ring-blue-500"
                         name="description"
                         required
-                        defaultValue={updateData.description}
+                        value={formData.description}
+                        onChange={handleChange}
+                        maxLength={528 }
                     />
                 </div>
 
                 <button
                     type="submit"
-                    className="bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transition font-semibold"
+                    className="bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transition font-semibold cursor-pointer"
                 >
                     Modifier la tâche
                 </button>

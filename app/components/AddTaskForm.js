@@ -8,7 +8,11 @@ const AddTaskForm = ({tasks, setTasks}) => {
   const [heureFin, setHeureFin] = useState('');
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
+  const [caractere,setCaractere] = useState(528)
 
+  const maxCaracter = 528;
+
+  const charCaracter = maxCaracter - description.length
   async function postData(e) {
     e.preventDefault();
     setMessage('');
@@ -110,14 +114,16 @@ const AddTaskForm = ({tasks, setTasks}) => {
             placeholder="Description détaillée de la tâche"
             className="border p-4 rounded-lg h-48 resize-none outline-none focus:ring-2 focus:ring-blue-500"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => {setDescription(e.target.value), setText(e.target.value);}}
             required
+            maxLength={528}
           />
+          <p>{charCaracter}  caractères restants.</p>
         </div>
 
         <button
           type="submit"
-          className="bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transition font-semibold"
+          className="bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transition font-semibold cursor-pointer"
         >
           Ajouter la tâche
         </button>

@@ -44,7 +44,7 @@ const Page = () => {
             onClick={() => {setUpdateWindow(false),setTaskId(null)}}
           >
             <div>
-              <UpdateForm updateWindow={updateWindow} setUpdateWindow={setUpdateWindow} updateData={updateData} />
+              <UpdateForm setTasks={setTasks} updateWindow={updateWindow} setUpdateWindow={setUpdateWindow} updateData={updateData} />
             </div>
           </div>
         )}
