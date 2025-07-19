@@ -28,3 +28,13 @@ export async function DELETE(req,{params}) {
         JSON.stringify({message:"Erreur cote serveur"})
     }
 }
+
+export async function GET(req,{params}) {
+    const id = params.id
+
+    const [data] = await pool.execute("SELECT * FROM tasks WHERE id = ?",[id]);
+
+    return new Response(JSON.stringify(data), {
+      headers: { 'Content-Type': 'application/json' },
+    });
+}

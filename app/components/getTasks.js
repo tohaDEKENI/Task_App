@@ -1,8 +1,7 @@
 'use client';
 import { useEffect, useState } from "react";
 
-const Gettasks = ({tasks, setTasks}) => {
-  //const [tasks, setTasks] = useState([]);
+const Gettasks = ({tasks, setTasks,updateWindow,setUpdateWindow,setTaskId}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 1;
   const [message,setMesage] = useState("")
@@ -49,8 +48,8 @@ const Gettasks = ({tasks, setTasks}) => {
    
   }
   
-  function updateTasks(){
-
+  function updateTasks(id){
+    setTaskId(id)
   }
 
   return (
@@ -78,7 +77,7 @@ const Gettasks = ({tasks, setTasks}) => {
               </div>
               <div className="flex gap-4 mt-4">
                 <button className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition cursor-pointer"
-                    
+                    onClick={()=>updateTasks(task.id)}
                 >
                   Modifier
                 </button>
@@ -92,6 +91,7 @@ const Gettasks = ({tasks, setTasks}) => {
           ))}
         </div>
       )}
+      
 
       {tasks.length > itemsPerPage && (
         <div className="flex justify-between items-center mt-8">
