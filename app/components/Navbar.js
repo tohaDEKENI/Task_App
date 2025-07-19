@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <nav className="flex justify-between items-center p-4 bg-white shadow fixed w-full">
-      <Link href="/" className="text-xl font-bold">Tâches Zen</Link>
+      <Link href="/" className="text-2xl font-bold">Tâches <span className="text-blue-400"> Zen </span></Link>
       
       <div className="flex items-center gap-4">
         <SignedOut>
