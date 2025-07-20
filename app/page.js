@@ -66,7 +66,7 @@ const Page = () => {
             Voir mes tâches
           </Link>
         </div>
-        <Link href={""}
+        <Link href={"/Statistiques"}
           className="bg-cyan-500 text-white hover:bg-cyan-600   px-6 py-3 rounded-lg transition font-semibold btn btn-info mt-4"
         >
           📊 Statistiques
