@@ -6,7 +6,6 @@ const Gettasks = ({ tasks, setTasks, updateWindow, setUpdateWindow, setTaskId })
     const itemsPerPage = 2;
     const [message, setMesage] = useState("")
     const [isMessage, setIsMage] = useState(false)
-    const [checked, setChecked] = useState(false)
 
     useEffect(() => {
         if (isMessage) {
@@ -82,11 +81,31 @@ const Gettasks = ({ tasks, setTasks, updateWindow, setUpdateWindow, setTaskId })
         setTaskId(id)
     }
 
+    const handleTaskType = async (e) => {
+        const value = e.target.value
+        console.log(value)
+        if (value === "Tout les tâches") {
+            const res = await fetch("/api/Tasks")
+            const data = await res.json()
+            setTasks(data)
+        }
+        if (value === "Tâche faite") {
+            const res = await fetch("/api/FinishTask")
+            const data = await res.json()
+            setTasks(data)
+        }
+        if (value === "Tâche non faite") {
+            const res = await fetch("/api/UnfinishTask")
+            const data = await res.json()
+            setTasks(data)
+        }
+    }
+
     return (
         <div className="p-6 max-w-4xl w-full mx-auto">
             <div className="flex justify-between">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-neutral-800">🗂️ Liste des tâches</h2>
-                <select defaultValue="Statut de la tâche" className="select select-neutral">
+                <select defaultValue="Statut de la tâche" className="select select-neutral" value={"Statut de la tâche"} onChange={handleTaskType}>
                     <option disabled={true}>Statut de la tâche</option>
                     <option>Tout les tâches</option>
                     <option>Tâche faite</option>
