@@ -71,6 +71,7 @@ const Page = () => {
         >
           📊 Statistiques
         </Link>
+        
       </main>
     </div>
   );

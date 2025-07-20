@@ -7,6 +7,7 @@ const Gettasks = ({ tasks, setTasks, updateWindow, setUpdateWindow, setTaskId })
     const [message, setMesage] = useState("")
     const [isMessage, setIsMage] = useState(false)
 
+
     useEffect(() => {
         if (isMessage) {
             const timer = setTimeout(() => {
@@ -142,7 +143,15 @@ const Gettasks = ({ tasks, setTasks, updateWindow, setUpdateWindow, setTaskId })
                             <p className="text-gray-600 mt-2 mb-3 italic">{task.description}</p>
 
                             <div className="flex flex-wrap gap-4 text-sm text-gray-700 bg-gray-100 py-2 px-4 label">
-                                <p>📅 <strong>Date :</strong> {task.due_date.slice(0, 10)}</p>
+                                <p>
+                                    📅 <strong>Date :</strong>{" "}
+                                    {new Date(task.due_date).toLocaleDateString("fr-FR", {
+                                        weekday: "long",
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric"
+                                    })}
+                                </p>
                                 <p>🕒 <strong>De :</strong> {task.heure_debut} <strong>à</strong> {task.heure_fin}</p>
                                 <p>
                                     📌 <strong>Statut :</strong>{" "}
