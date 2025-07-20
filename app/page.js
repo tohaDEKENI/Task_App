@@ -32,7 +32,7 @@ const Page = () => {
   return (
     <div className="md:h-screen bg-gray-200 h-auto">
       <Navbar />
-      <main className="pt-20 flex flex-col-reverse sm:flex-row max-w-10/12 m-auto items-center justify-center h-full ">
+      <main className="pt-20 flex flex-col-reverse sm:flex-row max-w-10/12 m-auto items-center justify-center h-full md:hidden">
         <div className="h-full w-full border-l-8 md:block hidden border-gray-400">
           <AddTaskForm tasks={tasks} setTasks={setTasks} />
         </div>
@@ -52,16 +52,16 @@ const Page = () => {
 
       </main>
 
-      <main className="p-6 max-w-3xl mx-auto text-center md:hidden flex flex-col items-center justify-center h-screen">
+      <main className="p-6 max-w-3xl mx-auto text-center flex flex-col items-center justify-center h-screen" >
         <h1 className="text-3xl font-bold mb-6">Tâches Zen</h1>
 
         <div className="flex flex-col md:flex-row justify-center gap-4">
           <Link href={"/AddTasks"}
-               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold"
+               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold btn btn-primary"
           >➕ Ajouter une tâche
           </Link>
           <Link href={"/ShowTasks"}
-              className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-semibold"
+              className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-semibold btn btn-primary"
           >📋 
           Voir mes tâches
           </Link>

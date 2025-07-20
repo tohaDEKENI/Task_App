@@ -105,8 +105,12 @@ const Gettasks = ({ tasks, setTasks, updateWindow, setUpdateWindow, setTaskId })
         <div className="p-6 max-w-4xl w-full mx-auto">
             <div className="flex justify-between">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-neutral-800">🗂️ Liste des tâches</h2>
-                <select defaultValue="Statut de la tâche" className="select select-neutral" value={"Statut de la tâche"} onChange={handleTaskType}>
-                    <option disabled={true}>Statut de la tâche</option>
+                <select
+                    defaultValue="Tout les tâches"
+                    className="select select-bordered select-primary w-6/12 outline-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                    onChange={handleTaskType}
+                >
+                    <option disabled>Statut de la tâche</option>
                     <option>Tout les tâches</option>
                     <option>Tâche faite</option>
                     <option>Tâche non faite</option>
