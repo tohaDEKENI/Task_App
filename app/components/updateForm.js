@@ -132,7 +132,7 @@ const UpdateForm = ({ setTasks, updateWindow, setUpdateWindow, updateData }) => 
                         required
                         value={formData.description}
                         onChange={handleChange}
-                        maxLength={528 }
+                        maxLength={400 }
                     />
                 </div>
 
