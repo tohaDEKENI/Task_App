@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-between items-center p-4 bg-white shadow fixed w-full navbar navbar-start ">
+    <nav className="flex justify-between items-center p-4 bg-white shadow fixed w-full navbar navbar-start z-50">
       <Link href="/" className="text-2xl font-bold">Tâches <span className="text-blue-400"> Zen </span></Link>
       
       <div className="flex items-center gap-4">
