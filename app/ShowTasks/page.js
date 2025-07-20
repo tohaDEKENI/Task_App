@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Gettasks from "../components/getTasks";
 import { useState, useEffect } from "react";
 import UpdateForm from "../components/updateForm";
+import { X } from 'lucide-react'
 const AddTage = () => {
 
     const [tasks, setTasks] = useState([]);
@@ -36,13 +37,28 @@ const AddTage = () => {
             </div>
             {updateWindow && taskId && updateData && (
                 <div
-                    className="fixed w-full h-full bg-black/50 self-center top-15 left-0"
-                    onClick={() => { setUpdateWindow(false), setTaskId(null) }}
+                    className="fixed  inset-0 bg-black/50 z-50 flex items-start justify-center overflow-y-auto px-4 py-10"
+                    onClick={() => {
+                        setUpdateWindow(false);
+                        setTaskId(null);
+                    }}
                 >
-                    <div>
-                        <UpdateForm setTasks={setTasks} updateWindow={updateWindow} setUpdateWindow={setUpdateWindow} updateData={updateData} />
+
+                    <div
+                        className="relative bg-white rounded-lg shadow-lg w-full max-w-md"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <p onClick={() => setUpdateData(false)} className="absolute right-0 cursor-pointer">
+                            <X className="text-5xl text-blue-400 font-extrabold" />
+                        </p>                        <UpdateForm
+                            setTasks={setTasks}
+                            updateWindow={updateWindow}
+                            setUpdateWindow={setUpdateWindow}
+                            updateData={updateData}
+                        />
                     </div>
                 </div>
+
             )}
 
 
