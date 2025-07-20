@@ -32,10 +32,10 @@ const Page = () => {
     <div className="md:h-screen bg-gray-200 h-auto">
       <Navbar />
       <main className="pt-20 flex flex-col-reverse sm:flex-row max-w-10/12 m-auto items-center justify-center h-full ">
-        <div className="  h-full w-full border-l-8 md:block hidden">
+        <div className="h-full w-full border-l-8 md:block hidden border-gray-400">
           <AddTaskForm tasks={tasks} setTasks={setTasks} />
         </div>
-        <div className="h-full w-full md:block justify-center border-l-8 border-r-8 hidden bg-white">
+        <div className="h-full w-full md:block justify-center border-l-8 border-gray-400 border-r-8 hidden bg-white">
           <Gettasks tasks={tasks} setTasks={setTasks} updateWindow={updateWindow} setUpdateWindow={setUpdateWindow} setTaskId={setTaskId} />
         </div>
         {updateWindow && taskId && updateData && (

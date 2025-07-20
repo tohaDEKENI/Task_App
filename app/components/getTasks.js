@@ -84,11 +84,26 @@ const Gettasks = ({ tasks, setTasks, updateWindow, setUpdateWindow, setTaskId })
 
     return (
         <div className="p-6 max-w-4xl w-full mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-neutral-800">🗂️ Liste des tâches</h2>
+            <div className="flex justify-between">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-neutral-800">🗂️ Liste des tâches</h2>
+                <select defaultValue="Statut de la tâche" className="select select-neutral">
+                    <option disabled={true}>Statut de la tâche</option>
+                    <option>Tout les tâches</option>
+                    <option>Tâche faite</option>
+                    <option>Tâche non faite</option>
+                </select>
+            </div>
+
 
             {paginatedTasks.length === 0 ? (
                 <div className="flex justify-center items-center flex-col">
                     <p className="text-center text-gray-500">Aucune tâche trouvée.</p>
+                    <div className="flex w-52 flex-col gap-4 ">
+                        <div className="skeleton h-32 w-full"></div>
+                        <div className="skeleton h-4 w-28"></div>
+                        <div className="skeleton h-4 w-full"></div>
+                        <div className="skeleton h-4 w-full"></div>
+                    </div>
                     <div className="flex w-52 flex-col gap-4 ">
                         <div className="skeleton h-32 w-full"></div>
                         <div className="skeleton h-4 w-28"></div>
