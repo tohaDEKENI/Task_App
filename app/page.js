@@ -57,15 +57,20 @@ const Page = () => {
 
         <div className="flex flex-col md:flex-row justify-center gap-4">
           <Link href={"/AddTasks"}
-               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold btn btn-primary"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold btn btn-primary"
           >➕ Ajouter une tâche
           </Link>
           <Link href={"/ShowTasks"}
-              className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-semibold btn btn-primary"
-          >📋 
-          Voir mes tâches
+            className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-semibold btn btn-primary"
+          >📋
+            Voir mes tâches
           </Link>
         </div>
+        <Link href={""}
+          className="bg-cyan-500 text-white hover:bg-cyan-600   px-6 py-3 rounded-lg transition font-semibold btn btn-info mt-4"
+        >
+          📊 Statistiques
+        </Link>
       </main>
     </div>
   );
