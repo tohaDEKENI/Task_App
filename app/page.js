@@ -5,6 +5,7 @@ import AddTaskForm from "./components/AddTaskForm";
 import Gettasks from "./components/getTasks";
 import UpdateForm from "./components/updateForm";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 const Page = () => {
   const [tasks, setTasks] = useState([]);
   const [updateWindow, setUpdateWindow] = useState(false)
@@ -55,19 +56,15 @@ const Page = () => {
         <h1 className="text-3xl font-bold mb-6">Tâches Zen</h1>
 
         <div className="flex flex-col md:flex-row justify-center gap-4">
-          <button
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold"
-            onClick={() => console.log("Ajouter une tâche")}
-          >
-            ➕ Ajouter une tâche
-          </button>
-
-          <button
-            className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-semibold"
-            onClick={() => console.log("Voir mes tâches")}
-          >
-            📋 Voir mes tâches
-          </button>
+          <Link href={"/AddTasks"}
+               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold"
+          >➕ Ajouter une tâche
+          </Link>
+          <Link href={"/ShowTasks"}
+              className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-semibold"
+          >📋 
+          Voir mes tâches
+          </Link>
         </div>
       </main>
     </div>

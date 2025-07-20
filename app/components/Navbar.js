@@ -17,8 +17,8 @@ export default function Navbar() {
         </SignedOut>
 
         <SignedIn>
-          <Link href="/tasks">Mes Tâches</Link>
-          <Link href="/tasks/new">➕ Nouvelle Tâche</Link>
+          <Link href="/ShowTasks">Mes Tâches</Link>
+          <Link href="/AddTasks">➕ Nouvelle Tâche</Link>
           <UserButton afterSignOutUrl="/" />
         </SignedIn>
       </div>
