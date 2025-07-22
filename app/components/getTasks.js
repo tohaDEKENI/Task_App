@@ -122,13 +122,13 @@ const Gettasks = ({ tasks, setTasks, updateWindow, setUpdateWindow, setTaskId })
             {paginatedTasks.length === 0 ? (
                 <div className="flex justify-center items-center flex-col">
                     <p className="text-center text-gray-500">Aucune tâche trouvée.</p>
-                    <div className="flex w-52 flex-col gap-4 ">
+                    <div className="flex w-full flex-col gap-4 ">
                         <div className="skeleton h-32 w-full"></div>
                         <div className="skeleton h-4 w-28"></div>
                         <div className="skeleton h-4 w-full"></div>
                         <div className="skeleton h-4 w-full"></div>
                     </div>
-                    <div className="flex w-52 flex-col gap-4 ">
+                    <div className="flex w-full flex-col gap-4 pt-10">
                         <div className="skeleton h-32 w-full"></div>
                         <div className="skeleton h-4 w-28"></div>
                         <div className="skeleton h-4 w-full"></div>

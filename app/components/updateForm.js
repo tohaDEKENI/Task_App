@@ -62,7 +62,7 @@ const UpdateForm = ({ setTasks, updateWindow, setUpdateWindow, updateData }) => 
 
     return (
 
-        <div className="p-6 max-w-3xl mx-auto w-full bg-blue-50 self-center" onClick={(e) => e.stopPropagation()}>
+        <div className="p-6 max-w-3xl mx-auto w-full bg-blue-50 self-center rounded-md" onClick={(e) => e.stopPropagation()}>
             
             <form className="flex flex-col gap-6 bg-white p-8 rounded-2xl shadow-lg border border-gray-200" onSubmit={updateDataForm}>
                 {

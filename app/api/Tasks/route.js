@@ -50,16 +50,3 @@ export async function GET(req) {
     return new Response('Erreur serveur', { status: 500 });
   }
 }
-
-/*
-export async function OPTIONS() {
-  return new Response(null, {
-    status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  });
-}
-*/
